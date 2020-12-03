@@ -1,0 +1,4 @@
+class HabitsController < ApplicationController 
+
+
+end 
