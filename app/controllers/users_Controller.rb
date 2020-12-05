@@ -17,9 +17,22 @@ class UsersController < ApplicationController
     end 
 
    
+    get '/user/:id' do 
+        @user = User.find_by_id(session[:user_id])
+        erb :'users/home.html'
+        
+    end 
 
-    get '/home' do 
-        "page that gives options for goals, routines, habits" 
+    get '/users/:id/edit' do 
+        
+    end 
+
+    patch '/users/:id' do 
+      
+    end 
+
+    delete '/users/:id' do 
+
     end 
 
 end 

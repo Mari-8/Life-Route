@@ -8,4 +8,7 @@ end
 
 use UsersController 
 use SessionsController
+use GoalsController 
+use HabitsController 
+use RoutinesController 
 run ApplicationController

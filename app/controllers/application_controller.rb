@@ -13,6 +13,16 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  post '/user_login' do 
+    redirect '/login'
+  end 
+
+
+
+
+
+
+
   helpers do 
 
     def logged_in? 
@@ -32,6 +42,7 @@ class ApplicationController < Sinatra::Base
       user = User.find_by(email: email)
       if user && user.authenticate(password)
         session[:email] = user.email
+        session[:user_id] = user.id
       else 
         redirect '/login'
         

@@ -1,0 +1,24 @@
+<head> 
+<link rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+
+<div class="user-home-header">
+    <h1>Personal Dashboard<h1>
+    <p><%= @user.name %></p> 
+<div> 
+<div class="nav-bar"> 
+    <ul> 
+        <li class="goals"><a href="/goals/<%= @user.id %>">Goals</a></li>
+        <li><a href="/routines/<%= @user.id %>">Routines</a></li>
+        <li><a href="/habits/<%= @user.id %>">Habits</a></li>
+        <li><a href="/guide">Guide</a></li>
+    </ul> 
+    <br><br>
+    <hr>
+    <br><br> 
+
+    <%= @user.habits %>
+
+
+</div
+
