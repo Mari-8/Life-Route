@@ -1,0 +1,20 @@
+<h1><%= @user.name %>'s Habits</h1> 
+<br><br>
+<% @habits.each do |h| %> 
+    <ul> 
+        <li><h4>Habit: <%= h.name %></h4></li><br>
+        <li>Reason: <%= h.why %></li>
+        <li>When: <%= h.when %></li>
+        <li>Where: <%= h.where %></li>
+        <li>How long: <%= h.duration %></li>
+    </ul> 
+    <form method="GET" action="/habits/<%= h.id %>/edit"> 
+    <input type="submit" value="Edit Habit"> 
+</form>
+    <br><br>
+<% end %> 
+
+
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>

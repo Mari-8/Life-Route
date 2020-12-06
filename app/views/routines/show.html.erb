@@ -1,0 +1,36 @@
+<h1><%= @routine.name %></h1><br><br>
+
+<h4>Your reason: <%= @routine.why %></h4><br><br>
+
+<h4>Your time commitment: <%= @routine.duration %></h4><br><br> 
+
+<hr> 
+
+<h2>Habits</h2> 
+
+<% @routine.habits.each do |h| %> 
+    <ul> 
+    <li><a href="/habits/<%= h.id %>"><%= h.name %></a></li>
+    </ul> 
+<% end %>
+
+<form action="/routines/<%= @routine.id %>/edit" method="GET"> 
+    <input type="submit" value="Edit Routine">
+</form> 
+
+
+<form action="/habits/new" method="GET">
+    <% session[:routine_id] = @routine.id %> 
+    <input type="submit" value="Add Habit"> 
+</form>
+
+
+<form action="/routines/<%= @routine.id %>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="delete"> 
+    <input type="submit" value="delete"> 
+</form> 
+<br><br>
+
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>

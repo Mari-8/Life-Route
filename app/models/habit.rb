@@ -1,4 +1,4 @@
 class Habit < ActiveRecord::Base
-    belongs_to :user 
+    has_many :users, through: :routines 
     belongs_to :routines
 end 

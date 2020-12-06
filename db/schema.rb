@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201203183703) do
+ActiveRecord::Schema.define(version: 20201205173140) do
 
   create_table "goals", force: :cascade do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20201203183703) do
     t.string  "why"
     t.string  "when"
     t.string  "where"
-    t.integer "duration"
+    t.string  "duration"
     t.integer "user_id"
     t.integer "routine_id"
   end

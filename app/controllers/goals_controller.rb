@@ -1,12 +1,12 @@
 class GoalsController < ApplicationController 
     
     get '/goals' do 
-        @user = User.find_by_id(session[:user_id])
+        @user = current_user
         erb :'goals/index.html'
     end 
 
     get '/goals/new' do 
-        @user = User.find_by_id(session[:user_id])
+        @user = current_user
         erb :'/goals/new.html'
     end 
 
@@ -29,6 +29,6 @@ class GoalsController < ApplicationController
     end 
 
     delete '/goals/:id' do 
-        
+
     end 
 end 

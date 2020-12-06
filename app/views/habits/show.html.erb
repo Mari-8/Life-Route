@@ -1,0 +1,17 @@
+
+
+    <h2> <%= @habit.name %> </h2> 
+
+    <h3>Reason: <%= @habit.why %></h3>
+    <h3>When: <%= @habit.when %></h3>
+    <h3>Where: <%= @habit.where %></h3>
+    <h3>How long will it take: <%= @habit.duration%></h3>
+    
+    <form method="GET" action="/habits/<%= @habit.id %>/edit"> 
+        <input type="submit" value="Edit Habit"> 
+    </form>
+
+
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>

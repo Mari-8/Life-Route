@@ -24,24 +24,27 @@ class RoutinesController < ApplicationController
     end 
 
 
-
-
     get '/routines/:id' do 
         @user = current_user 
-        @routines = current_user.routines
-        
+        @routine = Routine.find_by_id(params[:id])
+    
         erb :'routines/show.html'
     end 
 
     get '/routines/:id/edit' do 
-
+        @routine = Routine.find_by_id(params[:id])
+        erb :'routines/edit.html'
     end 
 
-    patch '/routines/:id/edit' do 
-
+    patch '/routines/:id' do 
+        @routine = Routine.find_by_id(params[:id]) 
+        @routine.update(params[:routine])
     end 
 
     delete '/routines/:id' do 
+        routine = Routine.find_by_id(params[:id])
+        routine.destroy 
 
+        redirect '/routines'
     end 
 end 

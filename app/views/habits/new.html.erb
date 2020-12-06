@@ -1,0 +1,25 @@
+<h1>Create new habit</h1> 
+
+<form method="POST" action="/habits"> 
+
+    <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br><br> 
+    <label for="why">Reason:</label> 
+        <input type="text" name="why" id="why"><br><br> 
+    <label for="when">When:</label> 
+        <input type="text" name="when" id="when"><br><br> 
+    <label for="where">Where:</label> 
+        <input type="text" name="where" id="where"><br><br> 
+    <label for="duration">How long:</label> 
+        <input type="text" name="duration" id="where"><br><br> 
+    
+    
+    <input type="submit" value="Create Habit"> 
+
+
+</form> 
+
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>
+

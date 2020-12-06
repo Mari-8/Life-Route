@@ -1,0 +1,33 @@
+
+<form method="POST" action="/users/<%= @user.id %>"> 
+    <input type="hidden" id="hidden" name="_method" value="patch"> 
+
+    <label for="name">Name:</label> 
+        <input type="text" name="user[name]" value="<%= @user.name %>"><br><br>
+
+    <input type="submit" value="edit">
+
+</form> 
+
+
+<form method="POST" action="/users/<%= @user.id %>"> 
+    <input type="hidden" id="hidden" name="_method" value="delete"> 
+    <input type="submit" value="Delete User"> 
+</form> 
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>
+
+

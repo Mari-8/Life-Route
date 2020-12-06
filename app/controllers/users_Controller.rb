@@ -17,22 +17,28 @@ class UsersController < ApplicationController
     end 
 
    
-    get '/user/:id' do 
-        @user = User.find_by_id(session[:user_id])
+    get '/users/:id' do 
+        @user = current_user
         erb :'users/home.html'
         
     end 
 
     get '/users/:id/edit' do 
-        
+        @user = current_user 
+        erb :'users/edit.html'
     end 
 
     patch '/users/:id' do 
-      
+      @user = User.find_by_id(session[:user_id])
+      @user.update(params[:user])
+      @user.save
+      redirect "/users/#{@user.id}"
     end 
 
     delete '/users/:id' do 
-
+        @user = current_user 
+        @user.destroy 
+        redirect '/login'
     end 
 
 end 

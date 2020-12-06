@@ -1,0 +1,16 @@
+
+
+<form method="POST" action="routines/<%= @routine.id %>"> 
+
+        <input type="hidden" id="hidden" name="_method" value="patch"> 
+
+    <label for="name">Name:</label> 
+        <input type="text" name="routine" id="name" value="<%= @routine.name %>"><br><br>
+    <label for="why">Reason:</label> 
+        <input type="text" name="routine" id="why" value="<%= @routine.why %>"><br><br>
+    <label for="duration">How long:</label> 
+        <input type="text" name="routine" id="duration" value="<%= @routine.duration %>"><br><br>
+
+    <input type="submit" value="Update"> 
+
+</form> 

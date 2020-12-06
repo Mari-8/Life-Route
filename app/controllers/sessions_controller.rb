@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     post '/sessions' do 
         login(params[:email], params[:password])
         @user = User.find_by_id(session[:user_id])
-        redirect "/home/#{@user.id}"
+        redirect "/users/#{@user.id}"
     end 
 
     get 'logout' do 

@@ -8,17 +8,20 @@
 <div> 
 <div class="nav-bar"> 
     <ul> 
-        <li class="goals"><a href="/goals/<%= @user.id %>">Goals</a></li>
-        <li><a href="/routines/<%= @user.id %>">Routines</a></li>
-        <li><a href="/habits/<%= @user.id %>">Habits</a></li>
+        <li><a href="/goals">Goals</a></li>
+        <li><a href="/routines">Routines</a></li>
+        <li><a href="/habits">Habits</a></li>
         <li><a href="/guide">Guide</a></li>
     </ul> 
     <br><br>
     <hr>
     <br><br> 
 
-    <%= @user.habits %>
+<form method="GET" action="/users/<%= @user.id %>/edit">
+    <input type="submit" value="Edit User">
+</form>
 
 
-</div
+
+</div>
 
