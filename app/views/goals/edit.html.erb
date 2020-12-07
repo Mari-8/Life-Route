@@ -1,0 +1,31 @@
+<h1> Edit <%= @goal.name %> </h1> 
+
+
+<form method="POST" action="/goals/<%= @goal.id %>"> 
+    <input type="hidden" id="hidden" name="_method" value="patch"> 
+
+<label for="name">Name: </label> 
+    <input type="text" name="name" id="name" value="<%= @goal.name %>"> 
+<label for="deadline">Deadline: </label> 
+    <input type="text" name="deadline" id="deadline" value="<%= @goal.deadline %>"> 
+<label for="why">Why: </label> 
+    <input type="text" name="why" id="why" value="<%= @goal.why %>"> 
+<label for="how">How: </label> 
+    <input type="text" name="how" id="how" value="<%= @goal.how %>"> 
+    
+<input type="submit" value="Edit Goal"> 
+
+</form> 
+<br><br>
+<form method="POST" action="/goals/<%= @goal.id %>"> 
+    <input type="hidden" id="hidden" name="_method" value="delete"> 
+    <input type="submit" value="Delete Goal"> 
+</form>
+<br><br>
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>
+<br><br> 
+<form method="GET" action="/goals"> 
+    <input type="submit" value="Back to goals"> 
+</form> 

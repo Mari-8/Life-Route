@@ -2,6 +2,8 @@ class GoalsController < ApplicationController
     
     get '/goals' do 
         @user = current_user
+        @goals = @user.goals
+        
         erb :'goals/index.html'
     end 
 
@@ -11,24 +13,52 @@ class GoalsController < ApplicationController
     end 
 
     post '/goals' do 
-        #creates the new goal
+        @goal = Goal.new(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
+    
+        if @goal.save
+            flash[:message] = "Hooray! A new goal. Lets create a routine to help you achieve it!"
+            redirect '/goals'
+        else 
+            flash[:error] = "Could not create goal: #{@goal.errors.full_messages.to_sentence}"
+            redirect '/goals/new' 
+        end 
     end 
 
     get '/goals/:id' do 
-        #shows single goal 
+        @user = current_user
+        @goal = Goal.find_by_id(params[:id])
+        session[:goal_id] = @goal.id  
         erb :'/goals/show.html' 
     end 
 
     get '/goals/:id/edit' do 
-
-        erb :'/goals/edit.html'
+        @user = current_user
+        @goal = Goal.find_by_id(session[:goal_id])
+        
+        if can_edit_goal(@goal)
+            erb :'/goals/edit.html'
+        else 
+            flash[:error] = "Cannot edit this goal, it is not yours!"
+            redirect "/users/#{@user.id}"
+        end 
     end 
 
     patch '/goals/:id' do 
-
+        @goal = Goal.find_by_id(params[:id])
+        @goal.update(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
+        redirect '/goals'
     end 
 
     delete '/goals/:id' do 
-
+        @goal = Goal.find_by_id(params[:id])
+        if can_edit_goal(@goal) 
+            @goal.destroy 
+            redirect '/goals'
+        else 
+            flash[:error] = "Cannot delete another users goal."
+            redirect '/goals'
+        end 
+        
     end 
+
 end 

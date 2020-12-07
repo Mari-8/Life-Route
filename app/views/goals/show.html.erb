@@ -1,0 +1,23 @@
+
+<h2><%= @goal.name %></h2>
+
+<h4>Deadline: <%= @goal.deadline %></h4>
+<br> 
+<h4>Why: <%= @goal.why %></h4> 
+<br> 
+<h4>How: <%= @goal.how %></h4> 
+<br><br>
+
+<form method="GET" action="/goals/<%= @goal.id %>/edit"> 
+    <input type="submit" value="Edit Goal"> 
+</form> 
+<br><br> 
+<form method="GET" action="/goals"> 
+    <input type="submit" value="Back to goals">
+</form> 
+<br><br>
+
+<br><br>
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>

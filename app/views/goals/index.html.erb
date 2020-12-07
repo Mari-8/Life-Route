@@ -1,0 +1,20 @@
+<h2><%= @user.name %>'s Goals</h2> 
+
+
+<% @goals.each do |g| %> 
+    <ul> 
+        <li><a href="/goals/<%= g.id %>"><%= g.name %></a></li> 
+    </ul> 
+    <br>
+<% end %> 
+
+
+<br><br>
+
+<form method="GET" action="/goals/new"> 
+    <input type="submit" value="Create a new goal">
+</form>
+<br><br>
+<form method="GET" action="/users/<%= @user.id %>">    
+        <input type="submit" value="Back to dashboard"> 
+</form>

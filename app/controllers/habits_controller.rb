@@ -9,21 +9,21 @@ class HabitsController < ApplicationController
     get '/habits/new' do 
         @user = current_user 
         @habits = current_user.habits 
+        @routine = Routine.find_by_id(session[:routine_id])
         erb :'habits/new.html'
     end 
 
     post '/habits' do 
-        @habit = Habit.new
-        @habit.name = params[:name]
-        @habit.why = params[:why] 
-        @habit.when = params[:when] 
-        @habit.where = params[:where] 
-        @habit.duration = params[:duration]
-        @habit.routine_id = session[:routine_id] 
-        @habit.user_id = session[:user_id]
-        @habit.save
-       
-        redirect "/routines/#{ session[:routine_id]}"
+        @habit = Habit.new(name: params[:name], why: params[:why], when: params[:when], where: params[:where], duration: params[:duration], routine_id: session[:routine_id], user_id: session[:user_id])
+        
+        if @habit.save 
+            flash[:message] = "You have added a habit! keep it up!"
+            redirect "/routines/#{ session[:routine_id]}"
+        else 
+            flash[:error] = "Habit creation failed: #{@habit.errors.full_messages.to_sentence}"
+            redirect "/habits/new" 
+        end 
+        
     end 
 
     get '/habits/:id' do 
@@ -37,7 +37,13 @@ class HabitsController < ApplicationController
     get '/habits/:id/edit' do 
         @user = current_user
         @habit = Habit.find_by_id(params[:id])
-        erb :'habits/edit.html'
+        if can_edit_habit(@habit)
+            erb :'habits/edit.html'
+        else 
+            flash[:error] = "Cannot edit this Habit, it is not yours!"
+            redirect "/habits"
+        end 
+        
     end 
 
     patch '/habits/:id' do 
@@ -48,7 +54,12 @@ class HabitsController < ApplicationController
 
     delete '/habits/:id' do 
         @habit = Habit.find_by_id(params[:id])
-        @habit.destroy
-        redirect '/habits'
+        if can_edit_habit(@habit) 
+            @habit.destroy
+            redirect '/habits'
+        else 
+            flash[:error] = "Cannot delete another users habit" 
+            redirect '/habits' 
+        end 
     end 
 end 

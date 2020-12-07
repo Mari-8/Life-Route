@@ -1,16 +1,22 @@
+<h2> Edit Routine </h2> 
 
-
-<form method="POST" action="routines/<%= @routine.id %>"> 
+<form action="/routines/<%= @routine.id %>" method="POST"> 
 
         <input type="hidden" id="hidden" name="_method" value="patch"> 
 
     <label for="name">Name:</label> 
-        <input type="text" name="routine" id="name" value="<%= @routine.name %>"><br><br>
+        <input type="text" name="routine[name]" id="name" value="<%= @routine.name %>"><br><br>
     <label for="why">Reason:</label> 
-        <input type="text" name="routine" id="why" value="<%= @routine.why %>"><br><br>
+        <input type="text" name="routine[why]" id="why" value="<%= @routine.why %>"><br><br>
     <label for="duration">How long:</label> 
-        <input type="text" name="routine" id="duration" value="<%= @routine.duration %>"><br><br>
+        <input type="text" name="routine[duration]" id="duration" value="<%= @routine.duration %>"><br><br>
 
-    <input type="submit" value="Update"> 
+    <input type="submit" value="Confirm Changes"> 
 
 </form> 
+
+<br><br> 
+
+<form action="/routines" methos="POST"> 
+    <input type="submit" value="Back to routines"> 
+</form>

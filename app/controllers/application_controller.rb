@@ -2,11 +2,13 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "life_route" 
+    register Sinatra::Flash 
   end
 
   get "/" do
@@ -17,7 +19,15 @@ class ApplicationController < Sinatra::Base
     redirect '/login'
   end 
 
+  get '/guide' do 
+    erb :'/guide.html'
+  end 
 
+
+  not_found do 
+    status 404 
+    erb :'users/error.html'
+  end 
 
 
   helpers do 
@@ -34,6 +44,22 @@ class ApplicationController < Sinatra::Base
       !!self
     end 
 
+    def can_edit_habit(habit) 
+      habit.user_id == current_user.id 
+    end 
+
+    def can_edit_routine(routine) 
+      routine.user_id == current_user.id 
+    end 
+
+    def can_edit_goal(goal) 
+      goal.user_id == current_user.id
+    end 
+
+    def can_edit_user(user)
+      user.id == session[:user_id]
+    end 
+
     def login(email, password) 
 
       user = User.find_by(email: email)
@@ -41,6 +67,7 @@ class ApplicationController < Sinatra::Base
         session[:email] = user.email
         session[:user_id] = user.id
       else 
+        flash[:invalid_login] = "Invalid credentials, try again!"
         redirect '/login'
         
       end 

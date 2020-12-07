@@ -9,8 +9,13 @@
         <li>How long: <%= h.duration %></li>
     </ul> 
     <form method="GET" action="/habits/<%= h.id %>/edit"> 
-    <input type="submit" value="Edit Habit"> 
-</form>
+            <input type="submit" value="Edit Habit"> 
+    </form>
+    <br>
+    <form method="GET" action="/habits/<%= h.id %>"> 
+        <input type="submit" value="View Habit">   
+    </form> 
+
     <br><br>
 <% end %> 
 
