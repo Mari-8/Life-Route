@@ -1,20 +1,26 @@
-<h2><%= @user.name %>'s Goals</h2> 
+  <div class="hero"> 
+    <div class="hero-head has-text-centered title"> 
 
+        <h2><%= @user.name %>'s Goals</h2> 
 
-<% @goals.each do |g| %> 
-    <ul> 
-        <li><a href="/goals/<%= g.id %>"><%= g.name %></a></li> 
-    </ul> 
-    <br>
-<% end %> 
+    </div>
+ 
 
-
-<br><br>
-
-<form method="GET" action="/goals/new"> 
-    <input type="submit" value="Create a new goal">
-</form>
-<br><br>
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+   
+        <div class="container has-text-centered"> 
+            <% @goals.each do |g| %> 
+               <ul> 
+               <li><a class="button is-success is-outlined" href="/goals/<%= g.id %>"><%= g.name %></a></li> 
+             </ul> 
+             <br>
+         <% end %> 
+   
+        </div>
+        
+        <div class="container has-text-centered"> 
+             <form method="GET" action="/goals/new"> 
+                 <input class="button is-ghost" type="submit" value="Create a new goal">
+             </form>
+        </div>  
+    
+</div> 

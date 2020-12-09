@@ -27,6 +27,7 @@ GEM
     bcrypt (3.1.16)
     bond (0.5.1)
     builder (3.2.4)
+    bulma (0.1.0)
     capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -125,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2, >= 4.2.6)
   bcrypt (~> 3.1.7)
+  bulma
   capybara
   corneal
   database_cleaner!

@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "life_route" 
+    set :show_exceptions, false
     register Sinatra::Flash 
   end
 
