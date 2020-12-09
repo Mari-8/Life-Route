@@ -1,31 +1,52 @@
-<h1> Edit <%= @goal.name %> </h1> 
+            
+<div class="hero"> 
+        <div class="hero-head has-text-centered title">             
+            <h1> Edit <%= @goal.name %> </h1> 
+        </div> 
+      
+        <div class="box mx-6 has-text-centered"> 
+            <form method="POST" action="/goals/<%= @goal.id %>"> 
+                <input type="hidden" id="hidden" name="_method" value="patch"> 
 
+            <div class="field">
+                <label class="label" for="name">Name</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="name" id="name" value="<%= @goal.name %>">
+                  </div> 
+            </div>
 
-<form method="POST" action="/goals/<%= @goal.id %>"> 
-    <input type="hidden" id="hidden" name="_method" value="patch"> 
+            <div class="field">
+                <label for="deadline">Deadline</label> 
+                <div class="control">
+                    <input class="input" style="width: 33%;" type="text" name="deadline" id="deadline" value="<%= @goal.deadline %>">
+                </div>
+            </div>
 
-<label for="name">Name: </label> 
-    <input type="text" name="name" id="name" value="<%= @goal.name %>"> 
-<label for="deadline">Deadline: </label> 
-    <input type="text" name="deadline" id="deadline" value="<%= @goal.deadline %>"> 
-<label for="why">Why: </label> 
-    <input type="text" name="why" id="why" value="<%= @goal.why %>"> 
-<label for="how">How: </label> 
-    <input type="text" name="how" id="how" value="<%= @goal.how %>"> 
-    
-<input type="submit" value="Edit Goal"> 
+            <div class="field">
+                <label for="why">Why</label> 
+                <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="why" id="why" value="<%= @goal.why %>">
+                </div>
+            </div> 
 
-</form> 
-<br><br>
-<form method="POST" action="/goals/<%= @goal.id %>"> 
-    <input type="hidden" id="hidden" name="_method" value="delete"> 
-    <input type="submit" value="Delete Goal"> 
-</form>
-<br><br>
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
-<br><br> 
-<form method="GET" action="/goals"> 
-    <input type="submit" value="Back to goals"> 
-</form> 
+            <div class="field"> 
+                <label for="how">How</label> 
+                <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="how" id="how" value="<%= @goal.how %>">
+                </div>
+            </div>
+
+                <input class="button is-outlined is-success" type="submit" value="Edit Goal"> 
+
+            </form> 
+        </div>
+      </div>
+            <br><br>
+            <form method="POST" action="/goals/<%= @goal.id %>"> 
+                <input type="hidden" id="hidden" name="_method" value="delete"> 
+                <input class="button is-outlined is-success" type="submit" value="Delete Goal"> 
+            </form>
+
+        
+        
+</div>
