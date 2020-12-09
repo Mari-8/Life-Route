@@ -1,17 +1,42 @@
-<h2>New Goal</h2> 
 
-<form method="post" action="/goals"> 
-    <label for="name">Name: </label> 
-        <input type="text" name="name" id="name"><br><br>
-    <label for="deadline">Deadline: </label> 
-        <input type="datetime" name="deadline" id="deadline" value="mm/dd/yyyy"><br><br>
-    <label for="why">Reason: </label> 
-        <input type="text" name="why" id="why"><br><br> 
-    <label for="how">How:</label> 
-        <input type="text" name="how" id="how"><br><br>
+<div class="hero has-text-centered"> 
+    <div class="hero-head title"> 
+        <h2>New Goal</h2> 
+    </div>
+    <div class="box mx-6 has-text-centered"> 
+        <form method="post" action="/goals"> 
 
-    <input type="submit" value="Create Goal"> 
+          <div class="field"> 
+            <label class="label" for="name">Name </label> 
+              <div class="control">
+                <input class="input" style="width: 33%;" type="text" name="name" id="name"><br><br>
+              </div>
+          </div> 
 
-</form> 
+          <div class="field"> 
+            <label class="label" for="deadline">Deadline </label>
+              <div class="control"> 
+                <input class="input" style="width: 33%;" type="datetime" name="deadline" id="deadline" value="mm/dd/yyyy"><br><br>
+              </div> 
+          </div>
 
+          <div class="field">
+            <label class="label" for="why">Reason </label> 
+              <div class="control"> 
+                <input class="input" style="width: 33%;" type="text" name="why" id="why"><br><br> 
+              </div>
+          </div>
+          
+          <div class="field">
+            <label class="label" for="how">How</label> 
+              <div class="controll">
+                <input class="input" style="width: 33%;" type="text" name="how" id="how"><br><br>
+              </div>
+          </div> 
+
+            <input class="button is-success is-outlined" type="submit" value="Create Goal"> 
+      
+        </form> 
+    </div> 
+</div> 
 
