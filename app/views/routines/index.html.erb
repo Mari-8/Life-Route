@@ -1,18 +1,20 @@
-<h2><%= @user.name %>'s Routines</h2> 
+<div class="hero has-text-centered">       
+    <div class="hero-head title"> 
+           <h2><%= @user.name %>'s Routines</h2> 
+    </div> 
 
-<% @routines.each do |r| %> 
-<ul>
-    <li><a href="/routines/<%= r.id %>"><%= r.name %></a></li>
-</ul>
-<br>
-<% end %> 
+        <div class="container"> 
+            <% @routines.each do |r| %> 
+            <ul>
+                <li><a class="button is-success is-outlined" href="/routines/<%= r.id %>"><%= r.name %></a></li>
+            </ul>
+            <br>
+            <% end %> 
+        </div>
+            <br><br>
 
-<br><br>
-
-<form method="GET" action="routines/new"> 
-    <input type="submit" value="Create a new routine">
-</form>
-<br><br>
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+            <form method="GET" action="routines/new"> 
+                <input class="button is-ghost" type="submit" value="Create a new routine">
+            </form>
+            
+</div>

@@ -14,6 +14,7 @@ class HabitsController < ApplicationController
     end 
 
     post '/habits' do 
+
         @habit = Habit.new(name: params[:name], why: params[:why], when: params[:when], where: params[:where], duration: params[:duration], routine_id: session[:routine_id], user_id: session[:user_id])
         
         if @habit.save 

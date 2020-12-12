@@ -1,22 +1,44 @@
-<h2> Edit Routine </h2> 
+            
+    <div class="hero has-text-centered"> 
+        <div class="hero-head title"> 
+            <h2> Edit Routine </h2> 
+        </div>
 
-<form action="/routines/<%= @routine.id %>" method="POST"> 
+        <div class="box mx-6 has-text-centered">
+            <form action="/routines/<%= @routine.id %>" method="POST"> 
 
-        <input type="hidden" id="hidden" name="_method" value="patch"> 
+                <input type="hidden" id="hidden" name="_method" value="patch"> 
 
-    <label for="name">Name:</label> 
-        <input type="text" name="routine[name]" id="name" value="<%= @routine.name %>"><br><br>
-    <label for="why">Reason:</label> 
-        <input type="text" name="routine[why]" id="why" value="<%= @routine.why %>"><br><br>
-    <label for="duration">How long:</label> 
-        <input type="text" name="routine[duration]" id="duration" value="<%= @routine.duration %>"><br><br>
+            <div class="field">     
+                <label class="label" for="name">Name</label> 
+                  <div class="control">
+                    <input class="input" style="width: 33%;" type="text" name="routine[name]" id="name" value="<%= @routine.name %>">
+                  </div> 
+            </div> 
 
-    <input type="submit" value="Confirm Changes"> 
+            <div class="field"> 
+                <label class="label" for="why">Reason</label>
+                  <div class="control">  
+                    <input class="input" style="width: 33%;" type="text" name="routine[why]" id="why" value="<%= @routine.why %>">
+                  </div> 
+            </div> 
 
-</form> 
+            <div class="field"> 
+                <label class="label" for="duration">How long</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="routine[duration]" id="duration" value="<%= @routine.duration %>">
+                  </div> 
+            </div> 
 
-<br><br> 
+                <input class="button is-success is-outlined" type="submit" value="Confirm Changes"> 
 
-<form action="/routines" methos="POST"> 
-    <input type="submit" value="Back to routines"> 
-</form>
+            </form>
+            <br>
+            <form action="/routines/<%= @routine.id %>" method="POST">
+                 <input type="hidden" id="hidden" name="_method" value="delete"> 
+                <input class="button is-danger is-outlined" type="submit" value="delete"> 
+            </form> 
+
+        </div> 
+            
+    </div>

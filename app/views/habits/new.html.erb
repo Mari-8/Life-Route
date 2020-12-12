@@ -1,26 +1,49 @@
-<h1>Create new habit</h1> 
+<div class="hero has-text-centered">          
+        <div class="hero-head title"> 
+            <h1>Create new habit</h1>
+        </div> 
+        
+        <div class="box mx-6 has-text-centered">
+            <form method="POST" action="/habits"> 
 
-<form method="POST" action="/habits"> 
+            <div class="field">
+                <label class="label" for="name">Name</label>
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="name" id="name"> 
+                  </div> 
+            </div> 
+                 
+            <div class="field">
+                <label class="label" for="why">Reason</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="why" id="why">
+                  </div> 
+            </div> 
 
-    <label for="name">Name:</label>
-        <input type="text" name="name" id="name"><br><br> 
-    <label for="why">Reason:</label> 
-        <input type="text" name="why" id="why"><br><br> 
-    <label for="when">When:</label> 
-        <input type="text" name="when" id="when"><br><br> 
-    <label for="where">Where:</label> 
-        <input type="text" name="where" id="where"><br><br> 
-    <label for="duration">How long:</label> 
-        <input type="text" name="duration" id="where"><br><br> 
-    
+            <div class="field"> 
+                <label class="label" for="when">When</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="when" id="when"> 
+                  </div> 
+            </div> 
 
+            <div class="field">
+                <label class="label" for="where">Where</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="where" id="where"> 
+                  </div> 
+            </div> 
 
-    <input type="submit" value="Create Habit"> 
-
-
-</form> 
-
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
-
+            <div class="field"> 
+                <label class="label" for="duration">How long</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="duration" id="where">
+                  </div>
+            </div> 
+            
+                <input class="button is-outlined is-success" type="submit" value="Create Habit"> 
+            
+            </form> 
+            
+        </div>
+</div> 

@@ -1,21 +1,28 @@
 
+<div class="hero has-text-centered"> 
 
-    <h2> <%= @habit.name %> </h2> 
+        <div class="hero-head title">
+            <h2> <%= @habit.name %> </h2> 
+        </div>
 
-    <h3>Reason: <%= @habit.why %></h3>
-    <h3>When: <%= @habit.when %></h3>
-    <h3>Where: <%= @habit.where %></h3>
-    <h3>How long will it take: <%= @habit.duration%></h3>
-    
-    <form method="GET" action="/habits/<%= @habit.id %>/edit"> 
-        <input type="submit" value="Edit Habit"> 
-    </form>
-
-<form method="POST" action="/habits/<%= @habit.id %>"> 
-    <input type="hidden" id="hidden" name="_method" value="delete"> 
-    <input type="submit" value="Delete Habit"> 
-</form>
-<br><br>
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+        <div class="box mx-6 has-text-centered is-size-4">
+            <h4 class="has-text-weight-bold">Reason</h4>
+                <p class="has-text-weight-normal"><%= @habit.why %></p>
+            <h4 class="has-text-weight-bold">When</h4>
+                <p class="has-text-weight-normal"><%= @habit.when %></p>
+            <h4 class="has-text-weight-bold">Where</h4>
+                <p class="has-text-weight-normal"><%= @habit.where %></p>
+            <h4 class="has-text-weight-bold">How long will it take</h4>
+                <p class="has-text-weight-normal"><%= @habit.duration%></p>
+          
+                <form method="GET" action="/habits/<%= @habit.id %>/edit"> 
+                   <input class="button is-outlined is-success" type="submit" value="Edit Habit"> 
+                </form>
+                <br>
+            <form method="POST" action="/habits/<%= @habit.id %>"> 
+                <input type="hidden" id="hidden" name="_method" value="delete"> 
+                <input class="button is-danger" type="submit" value="Delete Habit"> 
+            </form>
+        
+        </div>
+</div> 

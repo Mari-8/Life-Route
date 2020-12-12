@@ -1,36 +1,37 @@
-<h1><%= @routine.name %></h1><br><br>
+            
+<div class="hero has-text-centered">           
+        <div class="hero-head title">
+            <h1><%= @routine.name %></h1><br>
+        </div> 
 
-<h4>Your reason: <%= @routine.why %></h4><br><br>
+        <div class="container"> 
+            <h4 class="has-text-weight-bold">Your reason</h4>
+                <p class="has-text-weight-normal"><%= @routine.why %></p>
+            <br>
+            <h4 class="has-text-weight-bold">Your time commitment</h4>
+                <p class="has-text-weight-normal"><%= @routine.duration %></p>
+            <br>
+            <hr style="height:1px;border:none;color:#333;background-color:#333;length:60%;" /> 
 
-<h4>Your time commitment: <%= @routine.duration %></h4><br><br> 
+            <h3 class="title is-4">Habits</h3> 
 
-<hr> 
+            <% @routine.habits.each do |h| %> 
+                <ul> 
+                <li><a class="button is-success is-outlined" href="/habits/<%= h.id %>"><%= h.name %></a></li>
+                </ul> 
+                <br>
+            <% end %>
+            
 
-<h2>Habits</h2> 
+            <form action="/habits/new" method="GET">
+                <% session[:routine_id] = @routine.id %> 
+                <input class="button is-ghost" type="submit" value="Add Habit"> 
+            </form>
 
-<% @routine.habits.each do |h| %> 
-    <ul> 
-    <li><a href="/habits/<%= h.id %>"><%= h.name %></a></li>
-    </ul> 
-<% end %>
+            <form action="/routines/<%= @routine.id %>/edit" method="GET"> 
+                <input class="button is-ghost" type="submit" value="Edit Routine">
+            </form>
+           
+        </div> 
 
-<form action="/routines/<%= @routine.id %>/edit" method="GET"> 
-    <input type="submit" value="Edit Routine">
-</form> 
-
-
-<form action="/habits/new" method="GET">
-    <% session[:routine_id] = @routine.id %> 
-    <input type="submit" value="Add Habit"> 
-</form>
-
-<br><br>
-<form action="/routines/<%= @routine.id %>" method="POST">
-    <input type="hidden" id="hidden" name="_method" value="delete"> 
-    <input type="submit" value="delete"> 
-</form> 
-<br><br>
-
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+</div>           

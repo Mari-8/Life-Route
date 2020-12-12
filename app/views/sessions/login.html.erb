@@ -1,19 +1,33 @@
-<h1>Log In</h1> 
+      
+<div class="hero has-text-centered"> 
+    <div class="hero-head title"> 
+      <h1>Log In</h1> 
+    </div> 
 
-<form action="/sessions" method="POST"> 
-  <p>
-    <label for="email">Email:</label> 
-    <input type="text" name="email" id="email"> 
-  </p> 
+      <form action="/sessions" method="POST"> 
+       
 
-  <p>
-    <label for="password">Password:</label> 
-    <input type="password" name="password" id="password"> 
-  </p> 
+        <div class="field"> 
+          <label class="label" for="email">Email</label> 
+            <div class="control"> 
+              <input class="input" style="width: 33%;" type="text" name="email" id="email"> 
+            </div>
+        </div> 
+        
 
-  <input type="submit" value="Log In"> 
-</form> 
+        <div class="field"> 
+          <label class="label" for="password">Password</label> 
+            <div class="control"> 
+              <input class="input" style="width: 33%;" type="password" name="password" id="password"> 
+            </div>
+        </div>
+        
 
-<form method="GET" action="/"> 
-    <input type="submit" value="Back to welcome page"> 
-</form>
+        <input class="button is-success is-outlined" type="submit" value="Log In"> 
+      </form> 
+      <br>
+      <form method="GET" action="/"> 
+          <input class="button is-success is-outlined" type="submit" value="Back to welcome page"> 
+      </form>
+      
+</div> 

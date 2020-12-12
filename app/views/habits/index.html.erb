@@ -1,25 +1,36 @@
-<h1><%= @user.name %>'s Habits</h1> 
-<br><br>
-<% @habits.each do |h| %> 
-    <ul> 
-        <li><h4>Habit: <%= h.name %></h4></li><br>
-        <li>Reason: <%= h.why %></li>
-        <li>When: <%= h.when %></li>
-        <li>Where: <%= h.where %></li>
-        <li>How long: <%= h.duration %></li>
-    </ul> 
-    <form method="GET" action="/habits/<%= h.id %>/edit"> 
-            <input type="submit" value="Edit Habit"> 
-    </form>
-    <br>
-    <form method="GET" action="/habits/<%= h.id %>"> 
-        <input type="submit" value="View Habit">   
-    </form> 
+    <div class="hero has-text-centered">     
+        <div class="hero-head title"> 
+            <h1><%= @user.name %>'s Habits</h1> 
+        </div>
+            
+        <div class="container has-text-centered"> 
+            <% @habits.each do |h| %> 
+                <ul> 
+                    <li><h4 class="has-text-weight-bold">Habit</h4>
+                        <p class="has-text-weight-normal"><%= h.name %></li>
+                    <br>
+                    <li><h4 class="has-text-weight-bold">Reason</h4>
+                        <p class="has-text-weight-normal"><%= h.why %></p></li>
+                    <li><h4 class="has-text-weight-bold">When</h4>
+                        <p class="has-text-weight-normal"><%= h.when %></li>
+                    <li><h4 class="has-text-weight-bold">Where</h4>
+                        <p class="has-text-weight-normal"><%= h.where %></p></li> 
+                    <li><h4 class="has-text-weight-bold">How long</h4> 
+                        <p class="has-text-weight-normal"><%= h.duration %></p></li>
+                </ul> 
+                <br>
+            <form method="GET" action="/habits/<%= h.id %>"> 
+                <input class="button is-outlined is-success" type="submit" value="View Habit">   
+            </form> 
+            
+            <br><br>
+                <% end %> 
+        </div>
 
-    <br><br>
-<% end %> 
-
-
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+            <div class="container has-text-centered">
+                <p>Add a habit to a routine!</p> 
+            </div>
+            <form method="GET" action="/routines">
+                    <input class="button is-success" type="submit" value="Add Habit"> 
+            </form>
+    </div> 

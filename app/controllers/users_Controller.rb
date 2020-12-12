@@ -20,6 +20,9 @@ class UsersController < ApplicationController
    
     get '/users/:id' do 
         @user = current_user
+        @habits = @user.habits 
+        @routines = @user.routines
+        @goals = @user.goals 
         if can_edit_user(@user)  
             erb :'users/home.html'
         else 

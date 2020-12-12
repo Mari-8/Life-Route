@@ -1,33 +1,30 @@
 
-<form method="POST" action="/users/<%= @user.id %>"> 
-    <input type="hidden" id="hidden" name="_method" value="patch"> 
+    <div class="hero has-text-centered">  
+      
+        <form method="POST" action="/users/<%= @user.id %>"> 
+            <input type="hidden" id="hidden" name="_method" value="patch"> 
 
-    <label for="name">Name:</label> 
-        <input type="text" name="user[name]" value="<%= @user.name %>"><br><br>
+        <div class="field"> 
+            <label class="label" for="name">Name</label> 
+              <div class="control"> 
+                <input class="input" style="width: 33%;" type="text" name="user[name]" value="<%= @user.name %>">
+              </div> 
+        </div> 
 
-    <input type="submit" value="edit">
+            <input class="button is-success is-outlined" type="submit" value="edit">
 
-</form> 
-
-
-<form method="POST" action="/users/<%= @user.id %>"> 
-    <input type="hidden" id="hidden" name="_method" value="delete"> 
-    <input type="submit" value="Delete User"> 
-</form> 
-
-
-
-
-
-
-
-
+        </form> 
+        <br> 
+        <form method="POST" action="/users/<%= @user.id %>"> 
+            <input type="hidden" id="hidden" name="_method" value="delete"> 
+            <input class="button is-danger is-outined" type="submit" value="Delete User"> 
+        </form> 
+    </div> 
 
 
 
 
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+
+
 
 

@@ -8,12 +8,13 @@
       <!-- ↑ BULMA : Predesigned external CSS : 'free, open source CSS framework based on Flexbox..' "https://github.com/jgthms/bulma/blob/master/css/bulma.css"-->
 </head>
   
+<% if current_user %>
   <body class="has-navbar-fixed-top"> 
     <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation"> 
       <div class="navbar-menu is-active"> 
         <div class="navbar-start"> 
           <a class="navbar-item" href="/users/<%= current_user.id %>">Home</a> 
-          <a class="navbar-item" href="goals">Goals</a>
+          <a class="navbar-item" href="/goals">Goals</a>
           <a class="navbar-item" href="/routines">Routines</a> 
           <a class="navbar-item" href="/habits">Habits</a>
         </div> 
@@ -21,7 +22,10 @@
           <a class="navbar-item" href="/guide">Guide</a> 
        </div> 
     </nav>
+<% else %> 
+  <% nil %> 
 
+<% end %> 
 
     <% if flash[:invalid_login] %> 
         <h2><%= flash[:invalid_login] %></h2> 

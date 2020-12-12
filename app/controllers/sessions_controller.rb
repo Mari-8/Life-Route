@@ -10,8 +10,9 @@ class SessionsController < ApplicationController
         redirect "/users/#{@user.id}"
     end 
 
-    get 'logout' do 
+    get '/logout' do 
         session.clear
+        redirect '/'
     end 
 
 

@@ -1,29 +1,50 @@
-<head> 
-<link rel="stylesheet" href="/stylesheets/main.css" />
-</head>
+<div ="hero has-text-centered">
 
-<div class="user-home-header">
-    <h1>Personal Dashboard<h1>
-    <p><%= @user.name %></p> 
-<div> 
-<div class="nav-bar"> 
-    <ul> 
-        <li><a href="/goals">Goals</a></li>
-        <li><a href="/routines">Routines</a></li>
-        <li><a href="/habits">Habits</a></li>
-        <li><a href="/guide">Guide</a></li>
-    </ul> 
-    <br><br>
-    <hr>
-    <br><br> 
+        <div class="columns">
 
-<form method="GET" action="/users/<%= @user.id %>/edit">
-    <input type="submit" value="Edit User">
-</form>
-<br><br> 
-<form method="POST" action="/users/<%= @user.id %>"> 
-    <input type="hidden" id="hidden" name="_method" value="delete"> 
-    <input type="submit" value="Log Out"> 
-</form> 
+            <div class="column">
+                
+            </div>
+
+            <div class="column">
+                <div clas="box">   
+                    <h3 class="is-size-2 is-italic ">You have</h3> 
+                    <br> 
+                      <div class="box">
+                        <h3 class="title"><%= @goals.count %> Goal(s)</h3>  
+                        <h3 class="title"><%= @routines.count %> Routine(s)</h3> 
+                        <h3 class="title"> & </h3> 
+                        <h3 class="title"><%= @habits.count %> Habit(s)</h3> 
+                      </div> 
+                </div>
+            </div> 
+
+            <div class="column">
+             
+                    <div class="columns"> 
+
+                        <div class="column">
+                        </div> 
+
+                        <div class="column"> 
+                            <div class="container">
+                                <form method="GET" action="/users/<%= @user.id %>/edit">
+                                    <input class="button is-success is-outlined" type="submit" value="Edit User">
+                                </form>
+                            </div>
+                        </div> 
+
+                        <div class="column"> 
+                            <div class="container">
+                                <form method="GET" action="/logout"> 
+                                    <input class="button is-success is-outlined" type="submit" value="Log Out"> 
+                                </form> 
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+   
 </div>
-

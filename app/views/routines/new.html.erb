@@ -1,21 +1,38 @@
 
-<h2>Create a new routine!</h2> 
+<div class="hero has-text-centered">      
+        <div class="hero-head"> 
+            <h1 class="has-text-weight-bold">Create a new routine!</h1> 
+        </div>
+        <br>
+        <p>This is your system. This is how you will achieve your goals!</p>
+        <br> 
 
-<p>This is your system. This is how you will achieve your goals!</p>
+        <div class="box mx-6 has-text-centered"> 
+            <form action="/routines" method="POST"> 
+              
+            <div class="field"> 
+                <label class="label" for="name">Name: </label> 
+                  <div class="control">
+                    <input class="input" style="width: 33%;" type="text" name="name" id="name">
+                  </div> 
+            </div>
 
-<form action="/routines" method="POST"> 
+            <div class="field">
+                <label class="label" for="why">Reason behind this routine:</label> 
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="why" id="why">
+                  </div>
+            </div> 
 
-    <label for="name">Name: </label> 
-        <input type="text" name="name" id="name"><br><br>
-    <label for="why">Reason behind this routine:</label> 
-        <input type="text" name="why" id="why"><br><br>
-    <label for="duration">How long( x days/weeks/months) do you want do this routine?</label>
-        <input type="text" name="duration" id="duration"><br><br>
-
-    <input type="submit" value="Create Routine">
-
-</form> 
-<br><br>
-<form method="GET" action="/users/<%= @user.id %>">    
-        <input type="submit" value="Back to dashboard"> 
-</form>
+            <div class="field"> 
+                <label class="label" for="duration">How long( x days/weeks/months) do you want do this routine?</label>
+                  <div class="control"> 
+                    <input class="input" style="width: 33%;" type="text" name="duration" id="duration"> 
+                  </div> 
+            </div>
+                
+                <input class="button is-success is-outined" type="submit" value="Create Routine">
+                
+            </form> 
+        </div>             
+</div>

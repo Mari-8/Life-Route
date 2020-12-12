@@ -2,7 +2,7 @@ class GoalsController < ApplicationController
     
     get '/goals' do 
         @user = current_user
-        @goals = @user.goals
+        @goals = current_user.goals
         
         erb :'goals/index.html'
     end 
@@ -14,7 +14,7 @@ class GoalsController < ApplicationController
 
     post '/goals' do 
         @goal = Goal.new(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
-    
+        
         if @goal.save
             flash[:message] = "Hooray! A new goal. Lets create a routine to help you achieve it!"
             redirect '/goals'

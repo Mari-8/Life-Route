@@ -1,16 +1,17 @@
-<div class="hero"> 
-    <div class="hero-head has-text-centered title"
+<div class="hero has-text-centered"> 
+    <div class="hero-head title"
         <h2><%= @goal.name %></h2>
     </div> 
 
-    <div class="box mx-6 has-text-weight-bold has-text-centered is-size-4"> 
-        <h4>Deadline: <%= @goal.deadline %></h4>
-        <br> 
-        <h4>Why: <%= @goal.why %></h4> 
-        <br> 
-        <h4>How: <%= @goal.how %></h4> 
-        <br><br>
- 
+    <div class="box mx-6 has-text-centered is-size-4"> 
+        <h4 class="has-text-weight-bold">Deadline</h4>
+        <p class="has-text-weight-normal"><%= @goal.deadline%></p>
+        <h4 class="has-text-weight-bold">Why</h4> 
+        <p class="has-text-weight-normal"><%= @goal.why %></p>
+        <h4 class="has-text-weight-bold">How</h4>
+        <p class="has-text-weight-normal"><%= @goal.how %></p>
+        <br>
+    
             <form method="GET" action="/goals/<%= @goal.id %>/edit"> 
         <input class="button is-success is-outlined" type="submit" value="Edit Goal"> 
              </form> 
