@@ -27,8 +27,13 @@ class GoalsController < ApplicationController
     get '/goals/:id' do 
         @user = current_user
         @goal = Goal.find_by_id(params[:id])
-        session[:goal_id] = @goal.id  
-        erb :'/goals/show.html' 
+        if can_edit_goal(@goal)
+            session[:goal_id] = @goal.id  
+            erb :'/goals/show.html' 
+        else 
+            flash[:error] = "Cannot view another users goal"
+            redirect "/users/#{@user.id}"
+        end 
     end 
 
     get '/goals/:id/edit' do 

@@ -31,8 +31,13 @@ class HabitsController < ApplicationController
         @routine = Routine.find_by_id(session[:routine_id])
         @user = current_user
         @habit = Habit.find_by_id(params[:id])
-
-        erb :'habits/show.html'
+        
+        if can_edit_habit(@habit) 
+            erb :'habits/show.html'
+        else 
+            flash[:error] = "Cannot view another users habit" 
+            redirect "/users/#{@user.id}"
+        end 
     end 
 
     get '/habits/:id/edit' do 
