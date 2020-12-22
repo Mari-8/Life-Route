@@ -1,13 +1,14 @@
 <!DOCTYPE html> 
 <html> 
   <head>
+    <link rel="icon" href="public/images/favicon.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- ↑ BULMA REQUIREMENT : this line makes the site RESPONSIVE -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
       <!-- ↑ BULMA : Predesigned external CSS : 'free, open source CSS framework based on Flexbox..' "https://github.com/jgthms/bulma/blob/master/css/bulma.css"-->
-</head>
-  
+      </head>
+
 <% if current_user %>
   <body class="has-navbar-fixed-top"> 
     <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation"> 
@@ -24,7 +25,6 @@
     </nav>
 <% else %> 
   <% nil %> 
-
 <% end %> 
 
     <% if flash[:invalid_login] %> 
