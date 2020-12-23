@@ -6,13 +6,13 @@ class UsersController < ApplicationController
     end 
 
     post '/users' do 
-        @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+        user = User.new(name: params[:name], email: params[:email], password: params[:password])
         
-        if @user.save 
+        if user.save 
             flash[:message] = "Successfully created new account. Take a look at the guide!"
             redirect '/login'
         else 
-            flash[:error] = "Cannot create user: #{@user.errors.full_messages.to_sentence}"
+            flash[:error] = "Cannot create user: #{user.errors.full_messages.to_sentence}"
             redirect '/users/new'
         end
     end 
@@ -43,17 +43,21 @@ class UsersController < ApplicationController
     end 
 
     patch '/users/:id' do 
-      @user = User.find_by_id(session[:user_id])
-      @user.update(params[:user])
-
-      redirect "/users/#{@user.id}"
+      user = User.find_by_id(session[:user_id])
+      if can_edit_user(user)
+        user.update(params[:user])
+        redirect "/users/#{user.id}"
+      else 
+        flash[:error] = "Cannot edit another users information"
+        redirect '/'
+      end 
     end 
 
     delete '/users/:id' do 
         
-        @user = current_user 
-        if can_edit_user(@user) 
-             @user.destroy 
+        user = current_user 
+        if can_edit_user(user) 
+             user.destroy 
             redirect '/login'
         else 
             flash[:error] = "Cannot edit another users profile" 
