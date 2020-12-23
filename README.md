@@ -22,4 +22,4 @@ https://github.com/Mari-8/Life-Route/blob/main/LICENSE
 
 # Project status 
 
-I need to move my focus to the ongoing curriculum, so updates might be slow but I plan on continuing to change and improveme liferoute in the future.
+I need to move my focus to the ongoing curriculum, so updates might be slow but I plan on continuing to change and improve LifeRoute in the future.
