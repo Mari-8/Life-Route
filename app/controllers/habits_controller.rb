@@ -46,7 +46,7 @@ class HabitsController < ApplicationController
         if can_edit_habit(@habit)
             erb :'habits/edit.html'
         else 
-            flash[:error] = "Cannot edit this Habit, it is not yours!"
+            flash[:error] = "Cannot edit another users habit."
             redirect "/habits"
         end 
         
@@ -54,8 +54,13 @@ class HabitsController < ApplicationController
 
     patch '/habits/:id' do 
         @habit = Habit.find_by_id(params[:id])
-        @habit.update(params["habit"])
-        redirect '/habits'
+        if can_edit_habit(@habit) 
+            @habit.update(params["habit"])
+            redirect '/habits'
+        else 
+           flash[:error] = "Cannot edit another users habit."
+           redirect '/habits' 
+        end 
     end 
 
     delete '/habits/:id' do 
