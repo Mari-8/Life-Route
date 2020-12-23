@@ -50,8 +50,13 @@ class GoalsController < ApplicationController
 
     patch '/goals/:id' do 
         @goal = Goal.find_by_id(params[:id])
-        @goal.update(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
-        redirect '/goals'
+        if can_edit_goal(@goal)
+            @goal.update(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how])
+            redirect '/goals'
+        else
+            flash[:error] = "Cannot edit another users goal."
+            redirect '/goals'
+        end 
     end 
 
     delete '/goals/:id' do 
