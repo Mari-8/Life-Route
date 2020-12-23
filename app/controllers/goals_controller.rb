@@ -13,9 +13,9 @@ class GoalsController < ApplicationController
     end 
 
     post '/goals' do 
-        @goal = Goal.new(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
+        goal = Goal.new(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
         
-        if @goal.save
+        if goal.save
             flash[:message] = "Hooray! A new goal. Lets create a routine to help you achieve it!"
             redirect '/goals'
         else 
@@ -49,15 +49,20 @@ class GoalsController < ApplicationController
     end 
 
     patch '/goals/:id' do 
-        @goal = Goal.find_by_id(params[:id])
-        @goal.update(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how], user_id: session[:user_id])
-        redirect '/goals'
+        goal = Goal.find_by_id(params[:id])
+        if can_edit_goal(goal)
+            goal.update(name: params[:name], deadline: params[:deadline], why: params[:why], how: params[:how])
+            redirect '/goals'
+        else
+            flash[:error] = "Cannot edit another users goal."
+            redirect '/goals'
+        end 
     end 
 
     delete '/goals/:id' do 
-        @goal = Goal.find_by_id(params[:id])
-        if can_edit_goal(@goal) 
-            @goal.destroy 
+        goal = Goal.find_by_id(params[:id])
+        if can_edit_goal(goal) 
+            goal.destroy 
             redirect '/goals'
         else 
             flash[:error] = "Cannot delete another users goal."

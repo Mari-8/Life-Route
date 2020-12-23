@@ -13,13 +13,13 @@ class RoutinesController < ApplicationController
     end 
 
     post '/routines' do 
-        @routine = Routine.new(name: params[:name], why: params[:why], duration: params[:duration], user_id: session[:user_id])
+        routine = Routine.new(name: params[:name], why: params[:why], duration: params[:duration], user_id: session[:user_id])
     
-        if @routine.save
+        if routine.save
             flash[:message] = "Nice! New routine! Let's add some habits!"
-            redirect "/routines/#{@routine.id}"
+            redirect "/routines/#{routine.id}"
         else 
-            flash[:error] = "Cannot create routine: #{@routine.errors.full_messages.to_sentence}"
+            flash[:error] = "Cannot create routine: #{routine.errors.full_messages.to_sentence}"
             redirect '/routines/new' 
         end 
     end 
@@ -49,13 +49,19 @@ class RoutinesController < ApplicationController
     end 
 
     patch '/routines/:id' do 
-        @routine = Routine.find_by_id(params[:id])
-        @routine.update(params[:routine]) 
-        redirect '/routines'
+        routine = Routine.find_by_id(params[:id])
+        if can_edit_routine(routine) 
+            routine.update(params[:routine]) 
+            redirect '/routines'
+        else 
+            flash[:error] = "cannot delete another users routine" 
+            redirect '/routines' 
+        end 
     end 
 
     delete '/routines/:id' do 
         routine = Routine.find_by_id(params[:id])
+
         if can_edit_routine(routine) 
             routine.destroy 
             redirect '/routines'
